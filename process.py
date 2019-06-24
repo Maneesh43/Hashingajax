@@ -1,15 +1,15 @@
 from flask import Flask, render_template, request, jsonify
-#from flask_mail import Mail, Message
+from flask_mail import Mail, Message
 import hashlib as h
 app = Flask(__name__)
-#mail=Mail(app)
-#app.config['MAIL_SERVER']='smtp.gmail.com'
-#app.config['MAIL_PORT'] = 465
-#app.config['MAIL_USERNAME'] = 'appalerts43@gmail.com'
-#app.config['MAIL_PASSWORD'] = 'maneesh43'
-#app.config['MAIL_USE_TLS'] = False
-#app.config['MAIL_USE_SSL'] = True
-#mail = Mail(app)
+mail=Mail(app)
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'appalerts43@gmail.com'
+app.config['MAIL_PASSWORD'] = 'maneesh43'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 @app.route('/')
 def index():
@@ -52,6 +52,14 @@ def contactme():
     return render_template('contactm.html')
 @app.route('/sendmail',methods=['POST'])
 def sendmail():
-	return "work n progress"
+    if request.method=="POST":
+        a=request.form['email']
+        b=request.form['pwd']
+        c=request.form['comment1']
+        msg = Message(subject='App alerts', sender = 'appalerts43@gmail.com', recipients = ['appalerts43@gmail.com'])
+        msg.body = "hello %a %c"
+        mail.send(msg)
+        return "sent"
+    else:pass
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
