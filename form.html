@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Hashing Online</title>
+	<link href="https://fonts.googleapis.com/css?family=Cutive&display=swap" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script src="{{ url_for('static', filename='js/form.js') }}"></script>
+	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+  	<h1 style="text-align: center;">Hash Generator</h1>
+     {%for x,y in a1.items()%}
+     <p style="display:inline;">{{x}},</p>
+     {% endfor %}
+     <p>algorithms are supported</p>
+  	</div>
+</div>
+<div class="container">
+	<form class="form-inline">
+	  <div class="form-group">
+	    <label class="sr-only" for="textInput">Email address</label>
+	    <input type="text" class="form-control" id="textInput" placeholder="Enter data" name="textinputt">
+	  </div>
+	  <div class="form-group">
+	  	<div class="ml-5 bg-warning">
+	    <label class="sr-only" for="selectInput">Name</label>
+	    <select class="form-control" class="form-control" id="selectInput" name="selectinputt" placeholder=" algorithm">
+	    	 {%for x,y in a1.items()%}
+            <option value="{{x}}">{{ x }}</option>
+             {% endfor %}</select>
+	  </div>
+	</div>
+	<div class="ml-5 bg-warning">
+	  <button type="submit" class="btn btn-success">Submit</button></div>
+	</form>
+	<br>
+	 <div class="mt-5 ">
+	<div id="successAlert" style="display:none;font-family: 'Cutive', serif;font-size:40px;"></div>
+	<div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;font-family: 'Cutive', serif;"></div></div>
+</div>
+</body>
+</html>
