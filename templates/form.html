@@ -3,27 +3,48 @@
 <head>
 	<title>Hashing Online</title>
 	<link href="https://fonts.googleapis.com/css?family=Cutive&display=swap" rel="stylesheet">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet"> 
 	<script src="{{ url_for('static', filename='js/form.js') }}"></script>
-
-	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 </head>
 <body>
-	<div class="jumbotron jumbotron-fluid">
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Hash Generator</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/encrypt">Encryption</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/misc">Misc Utilities</a>
+      </li>    
+       <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact us</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+	<div style="margin: 0;" class="jumbotron jumbotron-fluid">
   <div class="container">
-  	<h1 style="text-align: center;">Hash Generator</h1>
+  	<h1 style="text-align: center;font-family: 'Varela Round', sans-serif;">Hash Generator</h1>
      {%for x,y in a1.items()%}
-     <p style="display:inline;">{{x}},</p>
+     <p style="display:inline;font-family: 'Varela Round', sans-serif;">{{x}},</p>
      {% endfor %}
-     <p>algorithms are supported</p>
+     <p style="font-family: 'Varela Round', sans-serif;">algorithms are supported</p>
   	</div>
 </div>
+<br><br>
 <div class="container">
 	<form class="form-inline">
 	  <div class="form-group">
@@ -36,16 +57,21 @@
 	    <select class="form-control" class="form-control" id="selectInput" name="selectinputt" placeholder=" algorithm">
 	    	 {%for x,y in a1.items()%}
             <option value="{{x}}">{{ x }}</option>
-             {% endfor %}</select>
+            {% endfor %}
+             </select>
 	  </div>
 	</div>
 	<div class="ml-5 bg-warning">
-	  <button type="submit" class="btn btn-success">Submit</button></div>
+	  <button type="submit" class="btn btn-success">Hashit</button></div>
 	</form>
 	<br>
 	 <div class="mt-5 ">
-	<div id="successAlert" style="display:none;font-family: 'Cutive', serif;font-size:40px;"></div>
+	<div id="successAlert" style="display:none;font-family: 'Cutive', serif;font-size:40px;overflow: auto;"></div>
 	<div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;font-family: 'Cutive', serif;"></div></div>
-</div>
+</div><br><br><br>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50" style="width: 100%;bottom:0px;flex-shrink: none;">
+    <div class="container text-center">
+      <small style="font-family: 'Cutive Mono', monospace;">Designed by Maneesh Thouti</small>
+      <small style="display:block;font-family: 'Cutive Mono', monospace;">Powered by BS4,AJAX,FLASK</small></div>
 </body>
 </html>
