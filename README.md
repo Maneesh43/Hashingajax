@@ -13,4 +13,4 @@
 
 
 **Access this project at hasherm.herokuapp.com**
-[view app](Hasherm.herokuapp.com) 
+[Hasherm.herokuapp.com](view app) 
