@@ -10,7 +10,6 @@ app.config['MAIL_PASSWORD'] = 'maneesh43'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-
 @app.route('/')
 def index():
     a=h.algorithms_guaranteed
@@ -53,13 +52,15 @@ def contactme():
 @app.route('/sendmail',methods=['POST'])
 def sendmail():
     if request.method=="POST":
-        a=request.form['email']
-        b=request.form['pwd']
-        c=request.form['comment1']
+        a=request.form['t1']
+        b=request.form['t2']
+        c=request.form['t3']
         msg = Message(subject='App alerts', sender = 'appalerts43@gmail.com', recipients = ['appalerts43@gmail.com'])
-        msg.body = "hello %a %c"
+        msg.body=c
         mail.send(msg)
-        return "sent"
-    else:pass
+        a="sent"
+        if(a=="sent"):return jsonify({'text1' : a})
+        else:return jsonify({'error' : 'Failed to send message'})
+    else:return "Unsupported method used"
 if __name__ == '__main__':
 	app.run(debug=True)
