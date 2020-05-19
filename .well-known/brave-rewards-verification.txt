@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: hasherm.herokuapp.com
+Token: babda6dab3055b9ab6bc03f4e0bb20b8e1752058a4af14cfc3cb26eb6f52dc7c
