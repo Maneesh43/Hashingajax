@@ -49,6 +49,9 @@ def misc1():
 @app.route('/contact')
 def contactme():
     return render_template('contactm.html')
+@app.route('/.well-known/brave-rewards-verification.txt')
+def serve1():
+    return app.send_static_file('.well-known/brave-rewards-verification.txt')
 @app.route('/sendmail',methods=['POST'])
 def sendmail():
     if request.method=="POST":
