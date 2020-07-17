@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,abort
 from flask_mail import Mail, Message
 import hashlib as h
-from flask_restful import Resource, Api 
+#from flask_restful import Resource, Api
+#from flask_httpauth import  HTTPBasicAuth
 app = Flask(__name__)
 mail=Mail(app)
-api = Api(app) 
+#api = Api(app)
+#auth=HTTPBasicauth()
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'appalerts43@gmail.com'
@@ -12,9 +14,9 @@ app.config['MAIL_PASSWORD'] = 'maneesh43'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-class test1(Resource):
-	def get(self,id):
-		return jsonify({'result':id})
+#class test1(Resource):
+	#def get(self,id):
+		#return jsonify({'result':id})
 @app.route('/')
 def index():
     a=h.algorithms_guaranteed
@@ -70,6 +72,18 @@ def sendmail():
         if(a=="sent"):return jsonify({'text1' : a})
         else:return jsonify({'error' : 'Failed to send message'})
     else:return "Unsupported method used"
-app.add_resource(test1,'/test/<id>')
+#api.add_resource(test1,'/test/<id>')
+@app.errorhandler(404)
+def error404(e):
+        return "A unknown error has occured",0
+@app.route('/api',methods=['GET'])
+def apir():
+        if request.method=="GET":
+                a=request.args.get("user")
+                b=request.args.get("pass")
+                if a=="maneesh" and b=="123":
+                        return jsonify({'Result:':a})
+                else: return "Bad credentials Try again "
+        else:return "Unsuitable method usage detected"
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
