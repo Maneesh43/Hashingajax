@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 import hashlib as h
+from flask_restful import Resource, Api 
 app = Flask(__name__)
 mail=Mail(app)
+api = Api(app) 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'appalerts43@gmail.com'
@@ -10,6 +12,9 @@ app.config['MAIL_PASSWORD'] = 'maneesh43'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
+class test1(Resource):
+	def get(self,id):
+		return jsonify({'result':id})
 @app.route('/')
 def index():
     a=h.algorithms_guaranteed
@@ -65,5 +70,6 @@ def sendmail():
         if(a=="sent"):return jsonify({'text1' : a})
         else:return jsonify({'error' : 'Failed to send message'})
     else:return "Unsupported method used"
+app.add_resource(test1,'/test/<id>')
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
