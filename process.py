@@ -82,8 +82,9 @@ def apir():
                 a=request.args.get("user")
                 b=request.args.get("pass")
                 if a=="maneesh" and b=="123":
-                        return jsonify({'Result:':a})
-                else: return "Bad credentials Try again "
+                        #return jsonify({'Result:':a})
+			return "Success"
+                else: return "failed"
         else:return "Unsuitable method usage detected"
 if __name__ == '__main__':
 	app.run(debug=True)
