@@ -6,7 +6,6 @@ import hashlib as h
 app = Flask(__name__)
 mail=Mail(app)
 #api = Api(app)
-#auth=HTTPBasicauth()
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'appalerts43@gmail.com'
@@ -78,13 +77,12 @@ def error404(e):
         return "A unknown error has occured",0
 @app.route('/api',methods=['GET'])
 def apir():
-        if request.method=="GET":
-                a=request.args.get("user")
-                b=request.args.get("pass")
-                if a=="maneesh" and b=="123":
-                        #return jsonify({'Result:':a})
-			return "Success"
-                else: return "failed"
-        else:return "Unsuitable method usage detected"
+            if request.method=="GET":
+                    a=request.args.get("user")
+                    b=request.args.get("pass")
+                    if a=="maneesh" and b=="123":
+                        return "success"
+                    else: return "failure"
+            else: "wrong request"
 if __name__ == '__main__':
 	app.run(debug=True)
