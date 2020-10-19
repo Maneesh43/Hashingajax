@@ -7,3 +7,4 @@ Werkzeug>=0.15
 gunicorn==19.9.0
 flask-mail
 flask_restful==0.3.8
+flask_sqlalchemy
