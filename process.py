@@ -81,7 +81,7 @@ def apir():
                     a=request.args.get("user")
                     b=request.args.get("pass")
                     if a=="maneesh" and b=="123":
-                        return "success"
+                        return jsonify(a:"hello")
                     else: return "failure"
             else: "wrong request"
 if __name__ == '__main__':
