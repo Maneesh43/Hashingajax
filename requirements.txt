@@ -6,6 +6,3 @@ MarkupSafe
 Werkzeug
 gunicorn
 flask-mail
-flask_restful
-flask_sqlalchemy
-python-3.6.12
